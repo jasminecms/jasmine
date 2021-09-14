@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "php": "^7.4|^8.0",
         "alexusmai/laravel-file-manager": "^2.5",
         "laravel/framework": "^6.2|^7.0|^8.0",
         "laravel/ui": "^1.0|^2.0|^3.0",

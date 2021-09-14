@@ -4,33 +4,24 @@
 
 @section('content')
     @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
+        <div class="alert alert-success" role="alert">{{ session('status') }}</div>
     @endif
 
-    <form method="POST" action="{{ route('jasmine.password.email') }}">
+    <form action="{{ route('jasmine.password.request') }}" method="post">
         @csrf
-
-        <div class="form-group">
+        <div class="f-group">
             <label for="email">{{ __('E-Mail Address') }}</label>
-
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+            <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email"
                    dir="ltr" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
             @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+            <div role="alert"><span>{{ $message }}</span></div>
             @enderror
         </div>
-
-        <div class="form-group">
-            <div class="">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Send Password Reset Link') }}
-                </button>
-            </div>
+        <div style="text-align: center;margin-top: 1.5rem;">
+            <button type="submit">{{ __('Send') }}</button>
+        </div>
+        <div style="text-align: center;margin-top: 1.5rem;">
+            <a href="{{ route('jasmine.login') }}">{{ __('Back to login') }}</a>
         </div>
     </form>
 @endsection
